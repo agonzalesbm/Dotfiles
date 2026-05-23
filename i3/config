@@ -14,7 +14,7 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 8
-font pango:Agave Nerd Fotn 10
+font pango:Agave Nerd Font 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -38,7 +38,8 @@ exec --no-startup-id nm-applet
 # Custom start programs
 exec --no-startup-id cbatticon
 exec --no-startup-id picom
-exec --no-startup-id wal -q -i ~/Pictures/wallpapers/sunrise-scenery-chill-coffee-bart.jpg
+# exec --no-startup-id pasystray
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/japan-background-digital-art.jpg
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -208,22 +209,25 @@ bindsym $mod+r mode "resize"
 
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $bgbart #e2a148
+set_from_resource $primary #38a9ce
+# set_from_resource $primary #1b5f86 
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused          $primary $primary $fg  #38a9ce  #38a9ce 
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg     $bg       $bg
 
 client.background       $bg
 
-default_border pixel 3
+default_border pixel 2
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status --config ~/.config/i3/i3status.conf
+    status_command i3status
     font pango:Agave Nerd Font
     position top
 
@@ -233,7 +237,7 @@ bar {
             statusline #ffffff
             separator #666666
 
-            focused_workspace  $bg     $bg     #ffffff
+            focused_workspace  #1b5f86 #1b5f86 #ffffff
             active_workspace   #333333 #5f676a #ffffff
             inactive_workspace #333333 #222222 #888888
             urgent_workspace   #2f343a #900000 #ffffff
